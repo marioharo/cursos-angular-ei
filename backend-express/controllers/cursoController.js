@@ -1,17 +1,6 @@
 const cursos = require("../models/cursos");
 
-
-exports.crear = async(req, res) => {
-    try {
-        const crearCursos = await cursos.create(req.body);
-        res.status(201).json(crearCursos);
-    } catch (error) {
-        res.status(400).json({
-            error: error.message
-        });
-    }
-}
-
+// GET
 exports.listar = async(req,res) => {
     try {
         const listarCursos = await cursos.find();
@@ -23,6 +12,19 @@ exports.listar = async(req,res) => {
     }
 }
 
+// POST
+exports.crear = async(req, res) => {
+    try {
+        const crearCursos = await cursos.create(req.body);
+        res.status(201).json(crearCursos);
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        });
+    }
+}
+
+// PUT
 exports.actualizar = async(req, res)=>{
     try {
         const actualizarCurso = await cursos.findByIdAndUpdate(
@@ -38,6 +40,7 @@ exports.actualizar = async(req, res)=>{
     }
 }
 
+// DELETE
 exports.eliminar = async(req, res)=>{
     try {
         await cursos.findByIdAndDelete(req.params.id);
