@@ -1,9 +1,10 @@
-const curso = require('../models/cursos');
+const cursos = require("../models/cursos");
+
 
 exports.crear = async(req, res) => {
     try {
-        const nuevo = await curso.create(req.body);
-        res.status(201).json(nuevo);
+        const crearCursos = await cursos.create(req.body);
+        res.status(201).json(crearCursos);
     } catch (error) {
         res.status(400).json({
             error: error.message
@@ -13,8 +14,8 @@ exports.crear = async(req, res) => {
 
 exports.listar = async(req,res) => {
     try {
-        const cursos = await curso.find();
-        res.json(cursos);
+        const listarCursos = await cursos.find();
+        res.json(listarCursos);
     } catch (error) {
         res.status(500).json({
             error: error.message
@@ -24,12 +25,12 @@ exports.listar = async(req,res) => {
 
 exports.actualizar = async(req, res)=>{
     try {
-        const actualizado = await curso.findByIdAndUpdate(
+        const actualizarCurso = await cursos.findByIdAndUpdate(
             req.params.id,
             req.body,
             {new:true}
         );
-        res.json(actualizado);
+        res.json(actualizarCurso);
     } catch (error) {
         res.status(400).json({
             error: error.message
@@ -39,7 +40,7 @@ exports.actualizar = async(req, res)=>{
 
 exports.eliminar = async(req, res)=>{
     try {
-        await curso.findByIdAndDelete(req.params.id);
+        await cursos.findByIdAndDelete(req.params.id);
         res.json({mensaje: 'Curso eliminado'});
     } catch (error) {
         res.status(400).json({

@@ -97,34 +97,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <div class="user-cell">
-                        <div style="width:42px;height:42px;background:linear-gradient(135deg,#1a1a2e,#7c3aed);border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;"
-                            aria-hidden="true">⚡</div>
-                        <div class="user-info">
-                            <div class="name">Desarrollo Frontend con React</div>
-                            <div class="sub">60 horas · Virtual</div>
+            @for (curso of cursos(); track curso._id) {
+                <tr>
+                    <td>
+                        <div class="user-cell">
+                            <div style="width:42px;height:42px;background:linear-gradient(135deg,#1a1a2e,#7c3aed);border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;"
+                                aria-hidden="true">⚡</div>
+                            <div class="user-info">
+                                <div class="name">{{curso.curso}}</div>
+                                <div class="sub">60 horas · Virtual</div>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td>María Torres</td>
-                <td><span class="badge badge-accent no-dot">Full Stack</span></td>
-                <td><strong>510</strong></td>
-                <td>⭐ 4.9</td>
-                <td><strong>S/ 180</strong></td>
-                <td><span class="badge badge-success">Activo</span></td>
-                <td>
-                    <div class="td-actions">
-                        <button class="btn btn-ghost btn-icon btn-sm" title="Editar"
-                            aria-label="Editar curso">✏️</button>
-                        <button class="btn btn-ghost btn-icon btn-sm" title="Desactivar"
-                            aria-label="Desactivar curso">🔕</button>
-                        <button class="btn btn-ghost btn-icon btn-sm" title="Eliminar" aria-label="Eliminar curso"
-                            style="color:var(--danger-600);">🗑️</button>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                    <td>{{curso.docente}}</td>
+                    <td><span class="badge badge-accent no-dot">{{curso.categoria}}</span></td>
+                    <td><strong>{{curso.inscritos}}</strong></td>
+                    <td>⭐ 4.9</td>
+                    <td><strong>S/ {{curso.precio}}</strong></td>
+                    <td><span class="badge badge-success">{{curso.estado}}</span></td>
+                    <td>
+                        <div class="td-actions">
+                            <button class="btn btn-ghost btn-icon btn-sm" title="Editar"
+                                aria-label="Editar curso">✏️</button>
+                            <button class="btn btn-ghost btn-icon btn-sm" title="Desactivar"
+                                aria-label="Desactivar curso">🔕</button>
+                            <button class="btn btn-ghost btn-icon btn-sm" title="Eliminar" aria-label="Eliminar curso"
+                                style="color:var(--danger-600);">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
