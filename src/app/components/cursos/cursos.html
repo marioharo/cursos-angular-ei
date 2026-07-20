@@ -71,6 +71,12 @@
                         color:var(--text-primary);
                         width:100%" />
 
+                @if (cursoForm.controls.curso.touched && cursoForm.controls.curso.invalid) {
+                <small style="color:red;">
+                    El nombre del curso es obligatorio.
+                </small>
+                }
+
         </div>
 
 
@@ -92,7 +98,11 @@
                         font-size:var(--text-sm);
                         color:var(--text-primary);
                         width:100%" />
-
+                @if (cursoForm.controls.docente.touched && cursoForm.controls.docente.invalid) {
+                    <small style="color:red;">
+                        El docente es obligatorio.
+                    </small>
+                }
         </div>
 
     </div>
@@ -119,7 +129,11 @@
                         font-size:var(--text-sm);
                         color:var(--text-primary);
                         width:100%" />
-
+            @if (cursoForm.controls.categoria.touched && cursoForm.controls.categoria.invalid) {
+                <small style="color:red;">
+                    La categoría es obligatoria.
+                </small>
+            }
         </div>
 
 
@@ -170,7 +184,11 @@
                         font-size:var(--text-sm);
                         color:var(--text-primary);
                         width:100%" />
-
+                @if (cursoForm.controls.precio.touched && cursoForm.controls.precio.invalid) {
+                    <small style="color:red;">
+                        El precio es obligatorio.
+                    </small>
+                }
         </div>
 
 
