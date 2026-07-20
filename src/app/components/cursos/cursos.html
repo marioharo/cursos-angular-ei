@@ -419,7 +419,7 @@
                     <td>
 
                         <div class="td-actions">
-                            
+
                         <button
                         class="btn btn-ghost btn-icon btn-sm"
                         title="Editar"
@@ -442,14 +442,15 @@
 
 
                             <button
-                                class="btn btn-ghost btn-icon btn-sm"
-                                title="Eliminar"
-                                aria-label="Eliminar curso"
-                                style="color:var(--danger-600);">
+                            class="btn btn-ghost btn-icon btn-sm"
+                            title="Eliminar"
+                            aria-label="Eliminar curso"
+                            style="color:var(--danger-600);"
+                            (click)="eliminarCurso(curso._id)">
 
-                                🗑️
+                            🗑️
 
-                            </button>
+                        </button>
 
                         </div>
 

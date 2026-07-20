@@ -104,7 +104,7 @@ export class Cursos implements OnInit {
   limpiarFormulario(): void {
 
     this.cursoEditandoId = null;
-    
+
     this.cursoForm.reset({
       curso: '',
       docente: '',
@@ -127,4 +127,27 @@ export class Cursos implements OnInit {
     estado: curso.estado
   });
 }
+
+eliminarCurso(id: string): void {
+
+  const confirmar = confirm(
+    '¿Estás seguro de que deseas eliminar este curso?'
+  );
+
+  if (!confirmar) {
+    return;
+  }
+
+  this.cursoService.eliminarCurso(id).subscribe({
+    next: () => {
+      alert('Curso eliminado correctamente');
+      this.cargarCursos();
+    },
+    error: (error) => {
+      console.error('Error al eliminar el curso:', error);
+      alert('No se pudo eliminar el curso');
+    }
+  });
+}
+
 }
