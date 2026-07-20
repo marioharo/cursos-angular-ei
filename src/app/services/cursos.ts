@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -23,21 +23,43 @@ export class CursosService {
 
   // Listar cursos
   getCurso(): Observable<CursosModel[]> {
-    return this.http.get<CursosModel[]>(this.apiUrl);
-  }
+  return this.http.get<CursosModel[]>(this.apiUrl);
+}
 
   // Crear curso
   crearCurso(curso: Omit<CursosModel, '_id'>): Observable<CursosModel> {
-    return this.http.post<CursosModel>(this.apiUrl, curso);
-  }
+  return this.http.post<CursosModel>(
+    this.apiUrl,
+    curso,
+    { headers: this.getHeaders() }
+  );
+}
 
-  // Actualizar curso
-  actualizarCurso(id: string, curso: Partial<CursosModel>): Observable<CursosModel> {
-    return this.http.put<CursosModel>(`${this.apiUrl}/${id}`, curso);
-  }
+actualizarCurso(
+  id: string,
+  curso: Partial<CursosModel>
+): Observable<CursosModel> {
+  return this.http.put<CursosModel>(
+    `${this.apiUrl}/${id}`,
+    curso,
+    { headers: this.getHeaders() }
+  );
+}
 
-  // Eliminar curso
-  eliminarCurso(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
+eliminarCurso(id: string): Observable<any> {
+  return this.http.delete(
+    `${this.apiUrl}/${id}`,
+    { headers: this.getHeaders() }
+  );
+}
+
+  private getHeaders(): HttpHeaders {
+  const token = localStorage.getItem('token') || '';
+
+  return new HttpHeaders({
+    Authorization: `Bearer ${token}`
+  });
+}
+
+
 }

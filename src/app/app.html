@@ -57,7 +57,19 @@
         class="sidebar-badge">12</span></a>
 
     <div class="sidebar-section-label">Sistema</div>
-    <a href="login.html"><span class="nav-icon" aria-hidden="true">🚪</span> Cerrar sesión</a>
+    <a
+    href="#"
+    (click)="cerrarSesion(); $event.preventDefault()">
+
+    <span
+        class="nav-icon"
+        aria-hidden="true">
+        🚪
+    </span>
+
+    Cerrar sesión
+
+</a>
   </nav>
 </aside>
 

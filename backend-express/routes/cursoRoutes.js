@@ -8,9 +8,17 @@ const {
     eliminar
 } = require('../controllers/cursoController');
 
-routes.post('/cursos', crear);
+const {
+    verificarToken,
+    soloAdmin
+} = require('../middlewares/authMiddleware');
+
+routes.post('/cursos', verificarToken, soloAdmin, crear);
+
 routes.get('/cursos', listar);
-routes.put('/cursos/:id', actualizar);
-routes.delete('/cursos/:id', eliminar);
+
+routes.put('/cursos/:id', verificarToken, soloAdmin, actualizar);
+
+routes.delete('/cursos/:id', verificarToken, soloAdmin, eliminar);
 
 module.exports = routes;

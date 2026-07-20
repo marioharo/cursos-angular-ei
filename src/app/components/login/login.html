@@ -1,0 +1,84 @@
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1>
+            EduTech Admin
+        </h1>
+
+        <p>
+            Inicia sesión para administrar la plataforma.
+        </p>
+
+        <form
+            [formGroup]="loginForm"
+            (ngSubmit)="iniciarSesion()">
+
+            <div class="form-group">
+
+                <label>
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="correo@ejemplo.com">
+
+                @if (
+                    loginForm.controls.email.touched &&
+                    loginForm.controls.email.invalid
+                ) {
+                    <small class="error">
+                        Ingresa un correo válido.
+                    </small>
+                }
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Contraseña
+                </label>
+
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Ingresa tu contraseña">
+
+                @if (
+                    loginForm.controls.password.touched &&
+                    loginForm.controls.password.invalid
+                ) {
+                    <small class="error">
+                        La contraseña es obligatoria.
+                    </small>
+                }
+
+            </div>
+
+
+            @if (mensajeError) {
+
+                <div class="error-message">
+                    {{ mensajeError }}
+                </div>
+
+            }
+
+
+            <button
+                type="submit"
+                class="btn-login">
+
+                Iniciar sesión
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
